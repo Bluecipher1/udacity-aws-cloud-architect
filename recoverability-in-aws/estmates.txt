@@ -1,0 +1,17 @@
+RTO estimate
+
+There are several events and actions that take similar amounts of time both in the single-AZ and region outage cases:
+Alert triggering (5 min), triggering on-call staff (1 min), staff getting ready and logging in (10 min), diagnosing the issue (5 min) and discovering the root cause (10 min).
+However, the time for remediation between the two cases will be different. For the single-AZ case, the (multi-AZ) database is automatically failed-over, but another AZ might be added (10 min).
+In the multi-region case, either the replica has to be made active and all applications must be redirecte to it, or another replica has to be created (30 min).
+
+1. Min RTO for single AZ outage:        45min
+2. Min RTO for single region outage:    1h30min
+
+RPO estimate
+
+In the single AZ case, there is no data loss as the database is running in a multi-AZ configuration. In the single region failure, if the secondary region fails there is also no data loss.
+Howeverm if the primary region fails, application data can't reach the DB until the applications have been redirected to the activated replica.
+
+3. Min RPO for single AZ outage:        0min
+4. Min RPO for single region outage:    0min (secondary fails) / 1h30min (primary fails)

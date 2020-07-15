@@ -1,0 +1,40 @@
+[ec2-user@ip-10-2-11-201 ~]$ mysql -h database-replica.coujyyq3zsm9.us-east-1.rds.amazonaws.com -u admin -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 31
+Server version: 8.0.17 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> use udacity;
+No connection. Trying to reconnect...
+Connection id:    9
+Current database: *** NONE ***
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+MySQL [udacity]> show tables;
++-------------------+
+| Tables_in_udacity |
++-------------------+
+| Person            |
++-------------------+
+1 row in set (0.00 sec)
+
+MySQL [udacity]> INSERT INTO Person (ID, LastName, FirstName) VALUES (2, 'Hook', 'Captain');
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> SELECT * FROM Person;
++------+----------+-----------+
+| ID   | LastName | FirstName |
++------+----------+-----------+
+|    1 | Pan      | Peter     |
+|    2 | Hook     | Captain   |
++------+----------+-----------+
+2 rows in set (0.00 sec)
+
+MySQL [udacity]>
