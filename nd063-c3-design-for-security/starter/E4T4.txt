@@ -1,0 +1,14 @@
+
+# What additional architectural change can be made to reduce the internet facing attack surface of the web application instance.
+The EC2 instance for the app server can be moved to the private subnet, while still being connected to the internet via the ALB in the public subnet.
+
+# Assuming the IAM permissions for the S3 bucket are still insecure, would creating VPC private endpoints for S3 prevent the unauthorized access to the secrets bucket.
+Since the secret resipes S3 bucket is currently configured to allow public access, creating a VPC endpoint in front of it to only allow access from the VPC 
+would restict unauthorized access from the public. It would still allow unauthorized access from resources within the VPC id they are not configured correctly.
+
+# Will applying default encryption setting to the s3 buckets encrypt the data that already exists?
+No, objects that were put into the S3 bucket before SSE encryption was enabled will still be unencrypted afterwards.
+
+# What would happen if the original cloud formation templates are applied to this environment.
+Resources that are configured via the CloudFormation template will be re-configured to the inital state. Resources that have been manually added (e.g. a private VPC endpoint)
+will stay in place. The encryption state of S3 objects is untouched.

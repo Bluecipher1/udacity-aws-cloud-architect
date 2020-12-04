@@ -1,0 +1,19 @@
+# Identify tools that will allow you to do the following:
+
+## Scan infrastructure as code templates
+CloudSploit
+
+### Example vulnerability
+Security Setting access rule to ALLOW ALL (0.0.0.0/0
+)
+##Scan AMI’s or containers for OS vulnerabilities
+Anchore
+
+### Example vulnerability
+Detect vulnerable library version used by the container's OS.
+
+##Scan an AWS environment for cloud configuration vulnerabilities
+AWS Config
+
+### Example vulnerability
+Violation of specified rules, e.g. SSE encryption disabled for S3 bucket.
