@@ -1,0 +1,28 @@
+Research and analyze which of the vulnerabilities appear to be related to the code that was deployed for the environment in this project.
+ There are numerous configuration issues which result in vulnerabilities:
+
+S3 Buckets
+The configured S3 buckets have no encryption enabled, do not restrict access to SSL requests and have no logging enabled.
+
+EC2 Instances
+The attached EBS volumes of the configured instances are not encrypted.
+
+Application Load Balancers
+The specified ALB does not redirect HTTP traffic to HTTPS.
+
+Security Groups
+The configured security groups allow inbound traffic from all IP addressess for all ports (Allow All, 0.0.0.0/0)
+
+Bonus - provide recommendations on how to remediate the vulnerabilities.
+S3 Buckets
+    - enable logging by using the LoggingConfiguration property
+    - configure bucket encryption by using the BucketEncryption property
+
+EC2 Instances
+    - enable EBS encryption by setting the AWS::EC2::Volume.Encrypted property to true
+
+Application Load Balancers
+    - define a redirect from HTTP (port 80) to HTTPS (port 443) using AWS::ElasticLoadBalancingV2::ListenerRule
+
+Security Groups
+    - define more specific rules using AWS::EC2::SecurityGroup to restrict ingress traffic to known IPs or security groups

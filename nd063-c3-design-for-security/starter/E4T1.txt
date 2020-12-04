@@ -1,0 +1,7 @@
+# Identify 2-3 changes that can be made to our environment to prevent an ssh brute force attack from the internet.
+- disable ssh password authentication on the app server instance
+- only allow inbound traffic for the Web server via the AppLoadBalancer SG
+- disallow port 22 from the internet (0.0.0.0/0) for both the AppLoadBalancer and WebAppSG
+
+# Neither instance should have had access to the secret recipes bucket, in the even that instance API credentials were compromised how could we have prevented access to sensitive data.
+The instance role policy for the web app instance currently allows all operations on all (*) S3 buckets. Restrict this to read-only access on the FreeRecipes S3 bucket.

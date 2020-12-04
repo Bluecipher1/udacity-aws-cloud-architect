@@ -1,0 +1,8 @@
+# Describe GuardDuty findings that were detected related to the brute force attack
+- The "Web Service Instace - C3" is the target of an SSH brute force attack being performed by the "Attack Instamce - C3" EC2 instance. This is considered to be of "Low" severity.
+- The "Attack Instamce - C3" EC2 instance performs an SSH brute force attack against the "Web Service Instace - C3"  EC2 instance. This is considered to be of "High" severity.
+
+# Research the AWS Guard Duty documentation page and explain how GuardDuty may have detected this attack - i.e. what was its source of information.
+Guard Duty collect information from several source like CloudTrail and CloudWatch and performs various analyses against that data using both direct rules and 
+machine learning approaches. In the case of the brute force attack, it probably has used information about the network traffic from the VPC Flow Logs and detected
+several unsuccessful login attempts in short order from the same IP address.
