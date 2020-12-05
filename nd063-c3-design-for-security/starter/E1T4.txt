@@ -1,0 +1,10 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+The security group used to configure access to the web application (WebAppSG) allows inbound access on all ports and protocols (0.0.0.0/0). This should be constrained to only the 
+prots and protocols needed for the functioning of the application. While access might be restricted in other layers and the access therefore currently restricted, it is important 
+to properly configure at all application and infrastructure layers (Defense in Depth) to mitigate possible security gaps in other layers and increase the difficulty to hack the system.
+
+# Poor practice 2
+The S3 bucket policies are to open and violate the Principle of Least Privilege. InstanceRolePolicy-C3 allows all action on all buckets, but it should be tailored to the buckets
+and actions needed forthe applicatiom.
