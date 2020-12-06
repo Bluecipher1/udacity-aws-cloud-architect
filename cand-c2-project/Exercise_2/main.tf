@@ -30,7 +30,7 @@ EOF
 
 resource "aws_lambda_function" "udacity_lambda" {
   filename      = "greet_lambda.zip"
-  function_name = "${var.lambda_function_name}"
+  function_name = var.lambda_function_name
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "greet_lambda.lambda_handler"
   runtime = "python3.6"
