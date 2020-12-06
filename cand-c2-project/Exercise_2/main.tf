@@ -1,6 +1,6 @@
 provider "aws" {
-  access_key = "XXX"
-  secret_key = "XXX"
+  access_key = "AKIAXZNIRFGZX7X4SFWC"
+  secret_key = "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"
   region = "us-east-1"
 }
 
@@ -30,7 +30,7 @@ EOF
 
 resource "aws_lambda_function" "udacity_lambda" {
   filename      = "greet_lambda.zip"
-  function_name = "${var.lambda_function_name}"
+  function_name = var.lambda_function_name
   role          = aws_iam_role.iam_for_lambda.arn
   handler       = "greet_lambda.lambda_handler"
   runtime = "python3.6"
